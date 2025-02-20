@@ -1,6 +1,6 @@
 # Agentforce Engineering Agent
 
-This agent provides programming assistance and integrates with development tools like Asana and GitHub to help engineering teams be more productive directly from Salesforce.
+This agent provides programming assistance and integrates with development tools like Asana and GitHub to help engineering teams be more productive directly from Salesforce and Slack.
 
 ## What is an Agentforce agent?
 
