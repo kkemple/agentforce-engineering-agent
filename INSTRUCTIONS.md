@@ -12,13 +12,12 @@ There are two methods of developing with Apex, using the Code Builder developer 
   * For the template type, leave Standard selected and press Enter
   * Give your project a name like Custom Platform Actions and press Enter
   * Choose a destination on your computer for the project and click Create Project
-  * From the VSCode command palette, search for SFDX: Authorize an Org and select it from the list of options
-    * Leave Project Default selected for login URL source and press Enter
-    * Set an org alias like customActionsOrg or leave the default and press Enter
-    * On the Salesforce login page, enter your Username and Password and click Log In
-    * Allow access for the Salesforce CLI to act on your behalf by clicking Allow
-    * You will get a notification in VSCode if authentication was successful
-
+* From the VSCode command palette, search for SFDX: Authorize an Org and select it from the list of options
+  * Leave Project Default selected for login URL source and press Enter
+  * Set an org alias like customActionsOrg or leave the default and press Enter
+  * On the Salesforce login page, enter your Username and Password and click Log In
+  * Allow access for the Salesforce CLI to act on your behalf by clicking Allow
+  * You will get a notification in VSCode if authentication was successful
 
 ## Setting up your GitHub and Asana actions
 
@@ -27,7 +26,7 @@ There are two methods of developing with Apex, using the Code Builder developer 
 
 ### Create your app
 
-To use an external API in custom actions within Agentforce, you first need to set up proper credentials. This is done by creating an OAuth app in your chosen platform (in this case GitHub and Asana) and using an Auth. Provider in Salesforce to manage the authentication flow.
+To use an external API in custom actions within Agentforce, you first need to set up proper credentials. This is done by creating an OAuth app in your chosen platform (in this case GitHub and Asana) and using an `Auth. Provider` in Salesforce to manage the authentication flow.
 
 * Navigate to your platform's developer portal or app settings
 * Create a new app
@@ -42,48 +41,48 @@ To use an external API in custom actions within Agentforce, you first need to se
 
 Create an auth provider to manage the authentication flow between your platform app and Salesforce.
 
-* In Salesforce setup, search for "Auth. Providers" and click New:
-  * For Provider Type select Open ID Connect
+* In Salesforce setup, search for `Auth. Providers` and click New:
+  * For `Provider Type` select `Open ID Connect`
   * Name it after your platform
   * Leave URL Suffix as default
-  * Enter your app's Client ID and Client Secret
+  * Enter your app's `Client ID` and `Client Secret`
   * Enter the platform's OAuth endpoints:
     * Authorize Endpoint URL
     * Token Endpoint URL
 * Save the auth provider
-* Copy the Callback URL
+* Copy the `Callback URL` (sometimes referred to as a `Redirect URL`)
 * Add the callback URL to your platform app's OAuth settings
 
 ### Create an External Credential
 
 Set up an external credential to store your authentication tokens and connect them to a Principal.
 
-* In Salesforce setup, under Named Credentials, select External Credentials tab and click New:
-  * For Label name it after your platform
-  * For Authentication Protocol: OAuth 2.0
-  * For Authentication Flow Type: Browser Flow
-  * Leave Scope blank
-  * For Identity Provider: Select your auth provider
-* Create a new Principal for your External Credential:
-  * For Parameter Name: Your app name
-  * For Sequence Number: 1
-  * For Identity Type: Named Principal
-  * Enter required OAuth scopes
+* In Salesforce setup, under `Named Credentials`, select `External Credentials` tab and click New:
+  * For `Label` name it after your platform
+  * For `Authentication Protocol`: OAuth 2.0
+  * For `Authentication Flow Type`: Browser Flow
+  * Leave `Scope` blank
+  * For `Identity Provider`: Select your auth provider
+* Create a new `Principal` for your External Credential:
+  * For `Parameter Name`: Your app name
+  * For `Sequence Number`: 1
+  * For `Identity Type`: Named Principal
+  * Enter any scopes you'll need for proper access
 * Save and authenticate the Principal
-* Enable for Einstein Agent User and System Administrator profiles:
-  * In Profiles, select Einstein Agent User
-  * Under External Credentials Principal Access
+* Enable for `Einstein Agent User` and `System Administrator` profiles:
+  * In Profiles, select `Einstein Agent User`
+  * Under `External Credentials Principal Access`
   * Enable your credential
-  * Repeat for System Administrator profile
+  * Repeat for `System Administrator` profile
 
 ### Create a Named Credential
 
 Create a Named Credential to configure your API endpoint and headers.
 
-* In Named Credentials, click New:
+* In Named Credentials, click `New`:
   * Label it "[Platform] API"
   * Name it similarly, but without spaces: Platform_API
-  * For URL: Your platform's API base URL
+  * For `URL`: Your platform's API base URL
   * Select your external credential
   * Save
 
@@ -225,4 +224,4 @@ Now that you have all your actions set up, it's time to build the actual agent a
 ### Testing your agent
 
 * Click `Activate` for your agent within Agent Builder
-* Copy sample prompts from the topic READMEs and confirm your agent is working
+* Copy sample prompts from the topic READMEs and confirm your agent is working 🎉
