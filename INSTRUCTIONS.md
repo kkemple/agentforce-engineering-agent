@@ -142,16 +142,22 @@ PORT=3000
 > Using HuggingFace's inference routing with the `hf-inference` provider:
 >
 > ```javascript
-> const hf = new HfInference(process.env.HUGGINGFACE_API_KEY, {
->   provider: "hf-inference"
+> return server.hf.chatCompletion({
+>   model: "your-model-choice-here",
+>   messages: [...systemMessages, ...userMessages],
+>   provider: "hf-inference",
+>   max_tokens: 500,
 > });
 > ```
 >
 > Using a specific provider like Together AI, Replicate, fal.ai, or SambaNova:
 >
 > ```javascript
-> const hf = new HfInference(process.env.HUGGINGFACE_API_KEY, {
->   provider: "together" // or "replicate", "fal-ai", "sambanova"
+> return server.hf.chatCompletion({
+>   model: "your-model-choice-here",
+>   messages: [...systemMessages, ...userMessages],
+>   provider: "together",
+>   max_tokens: 500,
 > });
 > ```
 
